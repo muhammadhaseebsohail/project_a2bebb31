@@ -1,0 +1,58 @@
+Sure! Given that the component is already using styled-components for styling, we can convert the same styling into CSS module form. Here's how you can do it:
+
+First, create a new CSS file in the same directory as your component. You can name it `FormSubmission.module.css`.
+
+```css
+/* FormSubmission.module.css */
+.formWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+```
+
+Now, import the CSS module into your component file, and assign the CSS classes to your form, input, and button elements respectively.
+
+```jsx
+import React, { useState } from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
+import styles from './FormSubmission.module.css'; // Import CSS module
+
+const FormSubmission = ({ url }) => {
+  // ... existing component code ...
+
+  return (
+    <form className={styles.formWrapper} onSubmit={handleSubmit}>
+      <input
+        type="text"
+        value={inputValue}
+        onChange={event => setInputValue(event.target.value)}
+        className={styles.input}
+      />
+      <button type="submit" className={styles.button}>Submit</button>
+    </form>
+  );
+};
+
+// ... existing component code ...
+
+export default FormSubmission;
+```
+
+This way, the component will have the same styling but now it's using CSS modules instead of styled-components. CSS modules are a great way to write CSS that is scoped to a single component, and they prevent the global scope from getting polluted with CSS. They are also more performant than styled-components in larger applications.
