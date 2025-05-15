@@ -1,0 +1,73 @@
+Sure, I can create a CSS module that matches the LoginForm component's needs. Here it is:
+
+```css
+/* LoginForm.module.css */
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  margin: 0 auto;
+}
+
+.input {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.button {
+  padding: 10px 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+}
+```
+
+Then, you can import and use this CSS module in your LoginForm component like this:
+
+```jsx
+// LoginForm.js
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import styles from './LoginForm.module.css';
+
+const LoginForm = ({ onSubmit }) => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    onSubmit({ username, password });
+  };
+
+  return (
+    <form onSubmit={handleSubmit} className={styles.form}>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username"
+        className={styles.input}
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+        className={styles.input}
+      />
+      <button type="submit" className={styles.button}>Login</button>
+    </form>
+  );
+};
+
+LoginForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+export default LoginForm;
+```
+Using CSS modules, each CSS class is scoped locally by default, which can help avoid class name collisions in larger applications.
