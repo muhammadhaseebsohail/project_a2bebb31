@@ -1,0 +1,35 @@
+Sure, I can create a CSS module that matches the styled-components styling in your example. 
+
+In your component file, you would need to import the CSS module using the following line:
+
+```jsx
+import styles from './LoginSuccessNotification.module.css';
+```
+
+And then apply the styles to your component:
+
+```jsx
+return (
+  <div className={styles.successNotification}>
+    You have successfully logged in!
+  </div>
+);
+```
+
+Here's how the CSS module would look like:
+
+`LoginSuccessNotification.module.css`
+
+```css
+.successNotification {
+  background-color: #dff0d8;
+  color: #3c763d;
+  margin: 10px 0;
+  padding: 10px 15px;
+  border: 1px solid #d6e9c6;
+  border-radius: 4px;
+  text-align: center;
+}
+```
+
+This CSS module will apply the same styling as the styled-components example. The `successNotification` class will be automatically scoped to the `LoginSuccessNotification` component, so it won't affect other components.
